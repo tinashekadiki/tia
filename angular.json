@@ -1,0 +1,785 @@
+{
+  "version": 1,
+  "projects": {
+    "agent": {
+      "projectType": "library",
+      "root": "libs/agent",
+      "sourceRoot": "libs/agent/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/agent"],
+          "options": {
+            "jestConfig": "libs/agent/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/agent/src/**/*.ts",
+              "libs/agent/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "auth": {
+      "projectType": "library",
+      "root": "libs/auth",
+      "sourceRoot": "libs/auth/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/auth"],
+          "options": {
+            "jestConfig": "libs/auth/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/auth/src/**/*.ts",
+              "libs/auth/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "client-dashboard": {
+      "projectType": "library",
+      "root": "libs/client-dashboard",
+      "sourceRoot": "libs/client-dashboard/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/client-dashboard"],
+          "options": {
+            "jestConfig": "libs/client-dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/client-dashboard/src/**/*.ts",
+              "libs/client-dashboard/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "clients": {
+      "projectType": "library",
+      "root": "libs/clients",
+      "sourceRoot": "libs/clients/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/clients"],
+          "options": {
+            "jestConfig": "libs/clients/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/clients/src/**/*.ts",
+              "libs/clients/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "core": {
+      "projectType": "library",
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core"],
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/core/src/**/*.ts",
+              "libs/core/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "customer-portal": {
+      "projectType": "application",
+      "root": "apps/customer-portal",
+      "sourceRoot": "apps/customer-portal/src",
+      "prefix": "front-application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "dependsOn": [],
+          "options": {
+            "outputPath": "dist/apps/customer-portal",
+            "index": "apps/customer-portal/src/index.html",
+            "main": "apps/customer-portal/src/main.ts",
+            "polyfills": "apps/customer-portal/src/polyfills.ts",
+            "tsConfig": "apps/customer-portal/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/customer-portal/src/favicon.ico",
+              "apps/customer-portal/src/assets",
+              "apps/customer-portal/src/Web.config"
+            ],
+            "styles": [
+              "apps/customer-portal/src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/customer-portal/src/environments/environment.ts",
+                  "with": "apps/customer-portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "customer-portal:build:production"
+            },
+            "development": {
+              "browserTarget": "customer-portal:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "customer-portal:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/customer-portal/src/**/*.ts",
+              "apps/customer-portal/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/customer-portal"],
+          "options": {
+            "jestConfig": "apps/customer-portal/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "customer-portal-e2e": {
+      "root": "apps/customer-portal-e2e",
+      "sourceRoot": "apps/customer-portal-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/customer-portal-e2e/cypress.json",
+            "devServerTarget": "customer-portal:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "customer-portal:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/customer-portal-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["customer-portal"]
+    },
+    "dashboard": {
+      "projectType": "library",
+      "root": "libs/dashboard",
+      "sourceRoot": "libs/dashboard/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dashboard"],
+          "options": {
+            "jestConfig": "libs/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dashboard/src/**/*.ts",
+              "libs/dashboard/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "front-office": {
+      "projectType": "application",
+      "root": "apps/front-office",
+      "sourceRoot": "apps/front-office/src",
+      "prefix": "front-application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "dependsOn": [],
+          "options": {
+            "outputPath": "dist/apps/front-office",
+            "index": "apps/front-office/src/index.html",
+            "main": "apps/front-office/src/main.ts",
+            "polyfills": "apps/front-office/src/polyfills.ts",
+            "tsConfig": "apps/front-office/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/front-office/src/favicon.ico",
+              "apps/front-office/src/assets",
+              "apps/front-office/src/Web.config"
+            ],
+            "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "apps/front-office/src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/front-office/src/environments/environment.ts",
+                  "with": "apps/front-office/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "front-office:build:production"
+            },
+            "development": {
+              "browserTarget": "front-office:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "front-office:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/front-office/src/**/*.ts",
+              "apps/front-office/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/front-office"],
+          "options": {
+            "jestConfig": "apps/front-office/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "front-office-e2e": {
+      "root": "apps/front-office-e2e",
+      "sourceRoot": "apps/front-office-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/front-office-e2e/cypress.json",
+            "devServerTarget": "front-office:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "front-office:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/front-office-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["front-office"]
+    },
+    "insurance": {
+      "projectType": "library",
+      "root": "libs/insurance",
+      "sourceRoot": "libs/insurance/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/insurance"],
+          "options": {
+            "jestConfig": "libs/insurance/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/insurance/src/**/*.ts",
+              "libs/insurance/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "insurer": {
+      "projectType": "library",
+      "root": "libs/insurer",
+      "sourceRoot": "libs/insurer/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/insurer"],
+          "options": {
+            "jestConfig": "libs/insurer/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/insurer/src/**/*.ts",
+              "libs/insurer/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "layouts": {
+      "projectType": "library",
+      "root": "libs/layouts",
+      "sourceRoot": "libs/layouts/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/layouts"],
+          "options": {
+            "jestConfig": "libs/layouts/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/layouts/src/**/*.ts",
+              "libs/layouts/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "payment": {
+      "projectType": "library",
+      "root": "libs/payment",
+      "sourceRoot": "libs/payment/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/payment"],
+          "options": {
+            "jestConfig": "libs/payment/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/payment/src/**/*.ts",
+              "libs/payment/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "payment-status": {
+      "projectType": "library",
+      "root": "libs/payment-status",
+      "sourceRoot": "libs/payment-status/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/payment-status"],
+          "options": {
+            "jestConfig": "libs/payment-status/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/payment-status/src/**/*.ts",
+              "libs/payment-status/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "shared": {
+      "projectType": "library",
+      "root": "libs/shared",
+      "sourceRoot": "libs/shared/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared"],
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/src/**/*.ts",
+              "libs/shared/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "telone-insurance": {
+      "projectType": "application",
+      "root": "apps/telone-insurance",
+      "sourceRoot": "apps/telone-insurance/src",
+      "prefix": "front-application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "dependsOn": [],
+          "options": {
+            "outputPath": "dist/apps/telone-insurance",
+            "index": "apps/telone-insurance/src/index.html",
+            "main": "apps/telone-insurance/src/main.ts",
+            "polyfills": "apps/telone-insurance/src/polyfills.ts",
+            "tsConfig": "apps/telone-insurance/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/telone-insurance/src/favicon.ico",
+              "apps/telone-insurance/src/assets",
+              "apps/telone-insurance/src/Web.config",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "apps/telone-insurance/src/assets/variable.scss",
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "apps/telone-insurance/src/styles.scss",
+              "node_modules/bootstrap/scss/bootstrap.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "18kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/telone-insurance/src/environments/environment.ts",
+                  "with": "apps/telone-insurance/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "telone-insurance:build:production"
+            },
+            "development": {
+              "browserTarget": "telone-insurance:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "telone-insurance:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/telone-insurance/src/**/*.ts",
+              "apps/telone-insurance/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/telone-insurance"],
+          "options": {
+            "jestConfig": "apps/telone-insurance/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "telone-insurance-e2e": {
+      "root": "apps/telone-insurance-e2e",
+      "sourceRoot": "apps/telone-insurance-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/telone-insurance-e2e/cypress.json",
+            "devServerTarget": "telone-insurance:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "telone-insurance:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/telone-insurance-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["telone-insurance"]
+    },
+    "user-groups": {
+      "projectType": "library",
+      "root": "libs/user-groups",
+      "sourceRoot": "libs/user-groups/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/user-groups"],
+          "options": {
+            "jestConfig": "libs/user-groups/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/user-groups/src/**/*.ts",
+              "libs/user-groups/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "users": {
+      "projectType": "library",
+      "root": "libs/users",
+      "sourceRoot": "libs/users/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/users"],
+          "options": {
+            "jestConfig": "libs/users/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/users/src/**/*.ts",
+              "libs/users/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "vehicle": {
+      "projectType": "library",
+      "root": "libs/vehicle",
+      "sourceRoot": "libs/vehicle/src",
+      "prefix": "front-application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/vehicle"],
+          "options": {
+            "jestConfig": "libs/vehicle/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/vehicle/src/**/*.ts",
+              "libs/vehicle/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    }
+  }
+}

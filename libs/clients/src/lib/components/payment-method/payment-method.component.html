@@ -1,0 +1,31 @@
+<mat-dialog-content fxLayout="column">
+  <ng-container *ngIf="data.showPhoneNumberInput; else elseTemplate">
+    <mat-form-field appearance="outline" fxFlex="100">
+<!--      <mat-label>Enter Phone Number</mat-label>-->
+<!--      <input [(ngModel)]="phoneNumber" #ctrl="ngModel" matInput />-->
+    </mat-form-field>
+
+    <button (click)="addToCart()" color="primary" fxFlex="100" mat-raised-button>Create Order</button>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Enter Phone Number</mat-label>
+      <input (input)="determineNetwork($event)" [(ngModel)]="phoneNumber" #ctrl="ngModel" matInput />
+    </mat-form-field>
+    <a *ngFor="let paymentMethod of paymentMethods">
+      <mat-list role="list">
+        <mat-list-item *ngIf="showPaymentMethod(paymentMethod)" role="listitem">
+          <button mat-button (click)="processPayment(paymentMethod)">
+            <img width="200" [src]="'/assets/' + paymentMethod.name + '.PNG'" />
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </a>
+  </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>
+    Cancel
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+mat-card{
+    width: 50%;
+}
+.main-button{
+  background: #04349c;
+  color: #ffffff;
+  margin-left: auto;
+  width: 120px;
+  border-radius: 12px;
+  width: 90%;
+}
+.center {
+    
+    text-align: center;
+    }

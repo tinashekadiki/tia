@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="px-lg-5 fixed-header">
+    <mat-toolbar-row class="my-2">
+        
+      <a routerLink="/" class="brand">
+        <!-- TelOne Insurance Aggregator -->
+      </a>
+      <span class="flexExpand"></span>
+      <a
+        mat-button
+        [routerLink]="['/profile']"
+        routerLinkActive="active"
+      >
+        Profile
+      </a>
+      <a
+        mat-button
+        [routerLink]="['/logout']"
+        routerLinkActive="active"
+      >
+        Logout
+      </a>
+      <ng-container>
+        <!-- <enterprise-user-menu></enterprise-user-menu> -->
+      </ng-container>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  

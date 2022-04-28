@@ -1,0 +1,15 @@
+/* mat-card{
+    width: 50%;
+} */
+
+.mat-dialog-content {
+  overflow: hidden;
+}
+
+.mat-button {
+  min-width: 0 !important;
+  line-height: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}

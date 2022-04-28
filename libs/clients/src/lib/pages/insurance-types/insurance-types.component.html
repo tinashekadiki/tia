@@ -1,0 +1,19 @@
+<div fxLayout="column">
+  <front-application-telone-center fxFlex="100"><h3>My Products</h3></front-application-telone-center>
+
+  <div fxLayout="row wrap" fxFlex="100">
+    <mat-card fxLayout fxFlex="45" [class.mat-elevation-z5]="true" [routerLink]="['/client/quote', product.id]"
+              class="clickable" *ngFor="let product of products$ | async">
+      <div fxFlex="30">
+        <mat-icon mat-list-icon>business</mat-icon>
+      </div>
+      <div fxFlex="70" fxLayout="column" fxLayoutAlign="space-between">
+        <div mat-line>{{product.name}}</div>
+        <button class="outlined-btn">
+          View More Details
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+</div>

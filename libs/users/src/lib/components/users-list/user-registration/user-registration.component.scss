@@ -1,0 +1,15 @@
+
+    .mat-column-email {
+        flex: 0 0 30%;
+    }
+    .mat-column-name {
+        flex: 0 0 30%;
+    }
+
+    .tag{
+        border-radius: 30px;
+    }
+
+    matColumnDef {
+        width: fit-content;
+    }

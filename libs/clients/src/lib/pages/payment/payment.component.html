@@ -1,0 +1,71 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            Make a Payment
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field appearance="fill">
+            <mat-label>Selected</mat-label>
+            <mat-select [(ngModel)]="paymentMethod">
+              <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">{{paymentMethod.name}}</mat-option>   
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="standard">
+            <mat-label>Number of Terms</mat-label>
+            <input matInput id="numberOfTerms" placeholder="Enter Payment Number" [(ngModel)]="orderNumber">
+            <mat-icon matSuffix>number</mat-icon>
+            
+          </mat-form-field>
+    </mat-card-content>
+</mat-card>
+<!-- <div *ngIf="payment !== null && payment !== undefined" fxLayout="column">
+  <div fxLayout="row">
+      <div class="title" fxFlex="40">
+          <h4>Payment Account</h4>
+      </div>
+      <div class="content" fxFlex="40">
+          <h4>{{payment.paymentAccount}}</h4>
+      </div>
+  </div>
+  
+
+  
+
+  <div fxLayout="row">
+      <div class="title" fxFlex="40">
+          <h4>Order Number</h4>
+      </div>
+      <div class="content" fxFlex="40">
+          <h4>{{payment.orderNumber}}</h4>
+      </div>
+  </div>
+
+  <div fxLayout="row">
+      <div class="title" fxFlex="40">
+          <h4>Payment Number</h4>
+      </div>
+      <div class="content" fxFlex="40">
+          <h4>{{payment.paymentNumber}}</h4>
+      </div>
+  </div>
+
+  <div fxLayout="row">
+      <div class="title" fxFlex="40">
+          <h4>Reference</h4>
+      </div>
+      <div class="content" fxFlex="40">
+          <h4>{{payment.paynowReference}}</h4>
+      </div>
+  </div>
+
+  <div fxLayout="row">
+      <div class="title" fxFlex="40">
+          <h4> <b> Status</b></h4>
+      </div>
+      <div class="content" fxFlex="40">
+          <h4> <b>{{payment.result}}</b></h4>
+      </div>
+  </div>
+  
+</div> -->

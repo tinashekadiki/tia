@@ -1,0 +1,39 @@
+<mat-dialog-content fxLayout="column">
+  <ng-container *ngIf="data.showPhoneNumberInput; else elseTemplate">
+    <h2>Enter phone number</h2>
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Enter Phone Number</mat-label>
+      <input [(ngModel)]="phoneNumber" #ctrl="ngModel" matInput />
+    </mat-form-field>
+    <!-- <div class="example-container">
+      <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="nhasi@nhasi.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div> -->
+
+    <button (click)="proceedToPay()" color="primary" fxFlex="100" mat-raised-button>Buy</button>
+  </ng-container>
+  <ng-template #elseTemplate >
+    <h2>Check Your Phone To enter PIN</h2>
+    <!-- <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Enter Phone Number</mat-label>
+
+      <input (input)="determineNetwork($event)" [(ngModel)]="phoneNumber" #ctrl="ngModel" matInput />
+    </mat-form-field> -->
+
+    <!-- <a *ngFor="let paymentMethod of paymentMethods" fxFlex="100">
+      <mat-list role="list">
+        <mat-list-item *ngIf="showPaymentMethod(paymentMethod)" role="listitem">
+          <button mat-button (click)="processPayment(paymentMethod)">
+            <img width="200" [src]="'/assets/' + paymentMethod.name.toLowerCase() + '.PNG'" />
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </a> -->
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel </button>
+</mat-dialog-actions>

@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@front-application/agent": ["libs/agent/src/index.ts"],
+      "@front-application/auth": ["libs/auth/src/index.ts"],
+      "@front-application/client-dashboard": [
+        "libs/client-dashboard/src/index.ts"
+      ],
+      "@front-application/clients": ["libs/clients/src/index.ts"],
+      "@front-application/core": ["libs/core/src/index.ts"],
+      "@front-application/dashboard": ["libs/dashboard/src/index.ts"],
+      "@front-application/insurance": ["libs/insurance/src/index.ts"],
+      "@front-application/insurer": ["libs/insurer/src/index.ts"],
+      "@front-application/layouts": ["libs/layouts/src/index.ts"],
+      "@front-application/payment": ["libs/payment/src/index.ts"],
+      "@front-application/payment-status": ["libs/payment-status/src/index.ts"],
+      "@front-application/shared": ["libs/shared/src/index.ts"],
+      "@front-application/user-groups": ["libs/user-groups/src/index.ts"],
+      "@front-application/users": ["libs/users/src/index.ts"],
+      "@front-application/vehicle": ["libs/vehicle/src/index.ts"],
+      "@front-application/vehicles": ["libs/vehicles/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

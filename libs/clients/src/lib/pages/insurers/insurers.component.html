@@ -1,0 +1,23 @@
+<div fxLayout="column">
+  <front-application-telone-center fxFlex="100"><h3>Insurers</h3></front-application-telone-center>
+  <div fxLayout="row wrap" fxFlex="100">
+    <mat-card fxFlex="100" fxLayout="row" [routerLink]="'/client/insurance-results/'+insurer.id+'/'+productId"
+         class="clickable"  *ngFor="let insurer of insurers$ | async ">
+      <div fxFlex="30">
+        <div class="title" mat-line>Registration Number</div>
+        <div class="title" mat-line>Insurer Name</div>
+      </div>
+      <div fxFlex="70" fxLayout="column" fxLayoutAlign="space-between">
+        <div mat-line>{{insurer.registrationNumber}}</div>
+        <div mat-line> {{insurer.name}} </div>
+        <div fxLayout="row">
+          <button class="outlined-btn">
+            View More Details
+          </button>
+          <span fxFlex></span>
+        </div>
+
+      </div>
+    </mat-card>
+  </div>
+</div>

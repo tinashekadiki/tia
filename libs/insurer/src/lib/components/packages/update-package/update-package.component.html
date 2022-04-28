@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Update Package</h2>
+<mat-dialog-content>
+  <form
+    [formGroup]="packageForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+    <!-- <mat-form-field>
+      <mat-select placeholder="Product Type" formControlName="productTypeId" >
+        <mat-option  *ngFor="let product of productTypeList" [value]="product.name">{{
+          product.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <!-- <mat-form-field>
+      <mat-select placeholder="Product" formControlName="productId">
+        <mat-option  *ngFor="let prod of productList" [value]="prod.code">{{
+          prod.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <!-- <mat-form-field>
+      <mat-select placeholder="Package" formControlName="packageId">
+        <mat-option  *ngFor="let package of packagesList" [value]="package.code">{{
+          package.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+
+    <mat-form-field>
+      <mat-label>Currency</mat-label>
+      <input matInput formControlName="currency" type="text" />
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Cost</mat-label>
+      <input matInput formControlName="cost" type="text" />
+    </mat-form-field></form
+></mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>
+    Cancel
+  </button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="Update()"
+    (click)="formValue.emit(packageForm.value)"
+    [disabled]="packageForm.invalid"
+    mat-dialog-close="true"
+  >
+    Update
+  </button>
+</mat-dialog-actions>

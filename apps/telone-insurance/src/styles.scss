@@ -1,0 +1,283 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$telone-insurance-primary: mat.define-palette(mat.$blue-palette, 800);
+$telone-insurance-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$telone-insurance-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$telone-insurance-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $telone-insurance-primary,
+      accent: $telone-insurance-accent,
+      warn: $telone-insurance-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($telone-insurance-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+
+  body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+  }
+
+  * {
+    font-family: 'Montserrat';
+  }
+
+  ::ng-deep .material-icons {
+    font-family: 'Material Icons', serif !important;
+  }
+
+  .text-color {
+    color: #757575;
+  }
+
+  body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+  }
+
+  //*{
+  //    box-sizing: border-box;
+  //    padding: 0;
+  //    margin: 0;
+  //}
+  .menu-spacer {
+    flex: 1 1 auto;
+  }
+
+  .main {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  h3 {
+    margin-top: 15px;
+    font-weight: bolder !important;
+    font-size: 18px !important;
+  }
+}
+
+button:focus {
+  outline: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+#div {
+  display: block !important;
+}
+
+.padd0 {
+  padding: 0px !important;
+}
+
+.margin0 {
+  margin: 0px !important;
+}
+
+.text-responsive {
+  font-size: x-large;
+  font-weight: normal;
+}
+
+.primary-text-color {
+  color: var(--background-primary-color) !important;
+}
+
+.small-primary-button {
+  background-color: var(--background-primary-color);
+  color: var(--highlighted-font-color);
+  border: none;
+  padding: 15px;
+  text-transform: uppercase;
+}
+
+.small-primary-button:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media only screen and (min-width: 144px) {
+  .text-responsive {
+    font-size: smaller;
+  }
+
+  /*1rem = 16px*/
+}
+
+@media only screen and (min-width: 544px) {
+  .text-responsive {
+    font-size: small;
+  }
+
+  /*1rem = 16px*/
+}
+
+@media only screen and (min-width: 644px) {
+  .text-responsive {
+    font-size: medium;
+  }
+
+  /*1rem = 16px*/
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media only screen and (min-width: 768px) {
+  .text-responsive {
+    font-size: medium;
+  }
+
+  /*1rem = 16px*/
+}
+
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  //.text-responsive {
+  //  font-size: large;
+  //}
+
+  /*1rem = 16px*/
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  //.text-responsive {
+  //  font-size: large;
+  //}
+
+  /*1rem = 16px*/
+}
+
+@media only screen and (min-width: 1400px) {
+  .text-responsive {
+    font-size: larger;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .text-responsive {
+    font-size: x-large;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .text-responsive {
+    font-size: xx-large;
+  }
+}
+
+clickable {
+  cursor: pointer;
+}
+
+.main-button {
+  background: #04349c;
+  color: #ffffff;
+  margin-left: auto;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.background-primary {
+  background-color: #0068b4 !important;
+  color: white;
+  overflow-y: hidden !important;
+}
+
+.outlined-btn {
+  border: 3px solid #04349c;
+  background-color: white;
+  color: #04349c;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.page-title {
+  color: #04349c;
+  padding: 1rem 0 0 1rem;
+  font-weight: bolder !important;
+}
+.dash-item {
+  min-height: 9rem;
+  background-color: #ffffff;
+  margin: 0.5rem;
+  padding: 1.5rem 0.5rem;
+  button {
+    padding-right: -2rem;
+  }
+  h4 {
+    color: #0069d9;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+  h5 {
+    color: #0069d9;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-weight: bolder;
+  }
+}
+.dash-item:hover{
+  transform: translate3d(0,-1px,0) scale(1.2);
+}
+
+.top-menu {
+  background-color: #0068b4 !important;
+}
+.top-menu button {
+  background-color: #0093ff;
+  border-radius: 0;
+}
+
+.dashboard-background {
+  background-color: #e5e5e5 !important;
+}
+
+.square-button {
+  background-color: #0093ff !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  margin: 0 10px !important;
+  border-radius: 0 !important;
+}
+
+.mat-footer-row,
+.mat-header-row,
+.mat-row {
+    display: inline-flex;
+    min-width: 100%;
+}

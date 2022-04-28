@@ -1,0 +1,19 @@
+.view-button{
+    background: #04349c;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 10px;
+    }
+    .mat-column-email {
+        flex: 0 0 30%;
+    }
+    .mat-column-name {
+        flex: 0 0 30%;
+    }
+
+ 
+
+    matColumnDef {
+        width: fit-content;
+    }

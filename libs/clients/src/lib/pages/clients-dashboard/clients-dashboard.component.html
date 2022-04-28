@@ -1,0 +1,24 @@
+<front-application-client-header></front-application-client-header>
+<div class="main" fxLayout="row">
+  <div class="container">
+    <div fxLayout="row">
+      <div fxFlex="70">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="pt-5" fxFlex="30" fxLayout="column">
+        <button mat-raised-button class="main-button" color="">
+          View Packages
+        </button>
+        <span fxFlex="5"></span>
+        <mat-card>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Search here...." value="">
+            <mat-icon class="search" matSuffix>search</mat-icon>
+          </mat-form-field>
+        </mat-card>
+      </div>
+  </div>
+</div>
+</div>
+<front-application-welcome-footer></front-application-welcome-footer>

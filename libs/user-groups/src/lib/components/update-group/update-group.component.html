@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Update Group permissions</h2>
+<mat-dialog-content>
+    <form
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+<mat-form-field>
+  <!-- <mat-slide-toggle *ngFor="let topping of [1, 3, 5]">{{topping}}</mat-slide-toggle> -->
+    <mat-select placeholder="Permissions" [formControl]="permissions" multiple>
+      <mat-option [value]="1" (click)="selectAll(ev)"
+      #ev
+       >SelectAll</mat-option>
+      <mat-option #perm (onselect)="selectPermission(perm)" *ngFor="let topping of permissionsList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-raised-button
+      color="primary" (click)="update(data.id)" mat-dialog-close="true">
+      Save
+    </button>
+  </mat-dialog-actions>

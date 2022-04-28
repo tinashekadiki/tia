@@ -1,0 +1,41 @@
+<div class="flex-grow-1 w-100 d-flex flex-column align-items-stretch">
+    <!-- <front-application-side-menu></front-application-side-menu> -->
+    <mat-toolbar>
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button" fxHide fxShow.lt-md>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span [ngClass]="{ 'hidden': !opened }">{{user.username}}</span>
+      <span>
+      </span>
+      <span class="head-menu"></span>
+      <div fxLayout="row">
+        <button mat-button>
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <div>
+          <img mat-button [matMenuTriggerFor]="profile" class="avatar" height="40" width="40"
+               src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg">
+          <mat-menu #profile="matMenu">
+            <button mat-menu-item (click)="signOut()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/users/my-profile']">
+              <mat-icon>person</mat-icon>
+              <span>My Profile</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </mat-toolbar>
+    <mat-sidenav-container>
+      <mat-sidenav [class]="'background-'+insurerProfile.primaryColor ?? 'blue'" #sidenav [mode]="opened === false ? 'over' : 'side'" [opened]="opened === true">
+        <mat-nav-list >
+          <front-application-side-menu-item *ngFor="let item of insurer"  [item]="item"></front-application-side-menu-item>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

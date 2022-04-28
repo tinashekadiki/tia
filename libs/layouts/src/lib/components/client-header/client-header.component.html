@@ -1,0 +1,92 @@
+<mat-toolbar class="nav-items" *ngIf="customer.username === 'Guest'; else user">
+  <span>
+    <img src="/assets/logo-main.png" height="45" alt="Logo" />
+  </span>
+  <span class="example-spacer"></span>
+  <span class="item" routerLink="/client">Dashboard</span>
+   <span class="item" routerLink="/collection">Collection Points</span>
+  <span class="example-spacer"></span>
+  <div>
+    <img
+      class="img-circle"
+      height="40"
+      width="40"
+      src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+    />
+  </div>
+  <div class="profile" fxLayout="column" fxLayoutGap="0" fxFlex="10">
+    <div [matMenuTriggerFor]="profile">
+      Hi
+      <br />
+      <div class="profile2" fxLayout="row" fxFlexAlign="center top">
+        {{ customer.username }}<mat-icon class="expand">expand_more</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button
+
+      mat-icon-button
+      color="primary"
+      aria-label="Add to cart"
+    >
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<ng-template #user>
+  <mat-toolbar class="nav-items" >
+  <span>
+    <img src="/assets/logo-main.png" height="45" alt="Logo" />
+  </span>
+    <span class="example-spacer"></span>
+    <span class="item" routerLink="/client">Dashboard</span>
+    <span class="item" routerLink="/client/diary">Diary</span>
+    <span class="item" routerLink="/client/payment-history">Payment History</span>
+     <span class="item" routerLink="/collection">Collection Points</span>
+    <span class="example-spacer"></span>
+    <div>
+      <img
+        class="img-circle"
+        height="40"
+        width="40"
+        src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+      />
+    </div>
+    <div class="profile" fxLayout="column" fxLayoutGap="0" fxFlex="10">
+      <div [matMenuTriggerFor]="profile">
+        Hi
+        <br />
+        <div class="profile2" fxLayout="row" fxFlexAlign="center top">
+          {{ customer.username }}<mat-icon class="expand">expand_more</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div>
+      <button
+        routerLink="/client/cart"
+        mat-icon-button
+        color="primary"
+        aria-label="Add to cart"
+      >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+</ng-template>
+
+<mat-menu #profile="matMenu">
+  <ng-container *ngIf="customer.username === 'Guest'; else elseTemplate">
+    <button mat-menu-item routerLink="/auth/login">
+      <mat-icon>logout</mat-icon>
+      <span>Login</span>
+    </button>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <button mat-menu-item routerLink="/auth/login">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+
+    </button>
+  </ng-template>
+</mat-menu>

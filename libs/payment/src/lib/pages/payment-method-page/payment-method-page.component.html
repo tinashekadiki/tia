@@ -1,0 +1,29 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center none">
+  <h2>Payment Method</h2>
+
+  <div fxFlex="95%">
+    <mat-divider></mat-divider><br />
+    <mat-card class="mat-elevation-z2 top-menu">
+      <mat-card-content>
+        <form class="form-inline my-2 my-lg-0">
+          <input type="search" ngModel name="key" id="searchCategory" class="form-control mr-sm-2" placeholder="Search...">
+          <button 
+          (click)="showAddMethodDialog()"
+          mat-raised-button
+          class="add-button"
+        >
+          Add Payment Method
+        </button>
+        </form>
+      </mat-card-content>
+      </mat-card>
+      <br>
+      <mat-card class="mat-elevation-z10">
+        <mat-card-content>
+            
+          <front-application-payment-method-list
+      
+          ></front-application-payment-method-list>
+       </mat-card-content> 
+        </mat-card>
+  

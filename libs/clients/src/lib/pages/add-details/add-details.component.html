@@ -1,0 +1,70 @@
+<mat-card>
+  <h2 class="form-title">Add your details and proceed to payment</h2>
+  <!-- [formGroup]="secondFormGroup" -->
+  <form >
+    <div fxLayout="row">
+      <h3 fxFlex="60"><b>Get info from diary?</b></h3>
+      <span fxFlex="10"></span>
+      <mat-slide-toggle fxFlex="30"></mat-slide-toggle>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label><b>Customer Phone</b></mat-label>
+        <input matInput type="username" formControlName="CustomerPhonenumber" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+      <span fxFlex="10"></span>
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label><b>Customer Date of Birth</b></mat-label>
+        <input matInput type="username" formControlName="customerDOB" />
+        <mat-icon matSuffix>user</mat-icon>
+        <mat-error></mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field  appearance="outline" fxFlex="100">
+        <mat-label><b>Vehicle Registration Number</b></mat-label>
+        <input matInput type="username" formControlName="vehicleRegNum" />
+        <mat-icon matSuffix>user</mat-icon>
+        <mat-error></mat-error>
+      </mat-form-field>
+      <span fxFlex="10"></span>
+
+    </div>
+
+    <div fxLayout="row">
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label><b>Vehicle Make</b></mat-label>
+        <input matInput type="username" formControlName="vehicleMake" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+      <span fxFlex="10"></span>
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label><b>Vehicle Model</b></mat-label>
+        <input matInput type="username" formControlName="vehicleModel" />
+        <mat-icon matSuffix>user</mat-icon>
+        <mat-error></mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label><b>Vehicle Type</b></mat-label>
+        <input matInput type="username" formControlName="vehicleType" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+      <span fxFlex="10"></span>
+      <mat-form-field appearance="outline" fxFlex="40">
+        <mat-label><b>Year of Manufacture</b></mat-label>
+        <input matInput type="username" formControlName="manufactureYear" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-card>

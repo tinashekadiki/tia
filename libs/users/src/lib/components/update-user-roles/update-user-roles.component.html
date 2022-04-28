@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Update Roles </h2>
+<mat-dialog-content>
+    <form
+      [formGroup]="rolesForm"
+      class="w-100 d-flex flex-column align-items-stretch"
+    >
+  
+      <mat-form-field appearance="standard">
+          <mat-label>Roles</mat-label>
+          <mat-select formControlName="role"   required>
+            <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+          </mat-select>
+       </mat-form-field>
+    </form></mat-dialog-content
+  >
+  
+  <mat-dialog-actions>
+    <button mat-raised-button color="warn" mat-dialog-close> Cancel</button>
+  
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="formValue.emit(rolesForm.value)"
+      [disabled]="rolesForm.invalid" (click)="update()" mat-dialog-close="true"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>
+  
+  

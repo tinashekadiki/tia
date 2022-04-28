@@ -1,0 +1,46 @@
+<div fxLayout="column">
+  <div fxFlex="100" fxLayoutGap="10">
+    <img
+      (click)="pickImage()"
+      class="img-circle"
+      width="100"
+      *ngIf="profile.companyProfile.logoUrl !== null"
+      [src]="profile.companyProfile.logoUrl"
+    />
+    <input
+      id="filePicker"
+      type="file"
+      (change)="updatePhoto($event)"
+    />
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Primary Color</mat-label>
+      <mat-select [(ngModel)]="primaryColor">
+        <mat-option value="blue"> Blue </mat-option>
+        <mat-option value="red"> Red </mat-option>
+        <mat-option value="green"> Green </mat-option>
+        <mat-option value="gold"> Gold </mat-option>
+        <mat-option value="yellow"> Yellow </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Secondary Color</mat-label>
+      <mat-select [(ngModel)]="secondaryColor">
+        <mat-option value="blue"> Blue </mat-option>
+        <mat-option value="red"> Red </mat-option>
+        <mat-option value="green"> Green </mat-option>
+        <mat-option value="gold"> Gold </mat-option>
+        <mat-option value="yellow"> Yellow </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <button mat-raised-button color="primary" (click)="updateImage()">
+      Update
+    </button>
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  </div>
+</div>

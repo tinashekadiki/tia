@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="container">
+    <div *ngIf="data !== null" fxLayout="column">
+      <front-application-telone-center fxFlex="100">
+        <h3>Collection places around you</h3>
+      </front-application-telone-center>
+      <div fxLayout="column">
+        <mat-expansion-panel [expanded]="currentCity === item.id" class="m-2" fxFlex="100"
+                             *ngFor="let item of data.content">
+          <mat-expansion-panel-header (click)="getCollectionPoints(item.id)">
+            <mat-panel-title>
+              {{item.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{item.province.name}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div *ngIf="currentCity === item.id">
+            <li *ngFor="let cp of collectionPoints">
+              {{cp.name}},
+              {{cp.addressLine1}},
+              {{cp.addressLine2}}, {{cp.cityName}}, {{cp.countryName}} <br>
+            </li>
+          </div>
+        </mat-expansion-panel>
+        <mat-card fxFlex="100" class="m-2">
+          <div *ngIf="!data.first">
+            <button (click)="getCities(data.pageable.pageNumber-1)" mat-raised-button color="primary">Previous</button>
+          </div>
+          <span fxFlex></span>
+          <div *ngIf="!data.last">
+            <button (click)="getCities(data.pageable.pageNumber+1)" mat-raised-button color="primary">Next</button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div *ngIf="data === null">
+      <div class="alert alert-info">
+        There are no collection points found
+      </div>
+    </div>
+  </div>
+</div>

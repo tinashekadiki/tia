@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{local_data.id ? 'Update Payment Method' : 'Add Payment Method'}}</h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="paymentMethodForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+  <mat-form-field class="col-10" appearance="outline">
+    <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" />
+    </mat-form-field>
+
+    <mat-form-field class="col-10" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" type="text" />
+    </mat-form-field>
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="formValue.emit(paymentMethodForm.value)"
+    (click)="save()" mat-dialog-close="true"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
+

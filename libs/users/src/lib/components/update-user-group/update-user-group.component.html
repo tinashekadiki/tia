@@ -1,0 +1,28 @@
+
+  <h2 mat-dialog-title>Update Groups</h2>
+  <mat-dialog-content>
+      <form
+      [formGroup]="groupsForm"
+      class="w-100 d-flex flex-column align-items-stretch"
+    >
+  <mat-form-field>
+      <mat-select placeholder="Groups" [formControl]="groups">
+        
+        <mat-option *ngFor="let group of groupsList" [value]="group">{{group.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button mat-dialog-close>Cancel</button>
+    
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="formValue.emit(groupsForm.value)"
+        [disabled]="groupsForm.invalid" (click)="update(data.id)" mat-dialog-close="true"
+      >
+        Save
+      </button>
+    </mat-dialog-actions>
+  

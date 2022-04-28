@@ -1,0 +1,62 @@
+<front-application-telone-center>
+    <h3 fxFlex="">My Diary</h3>
+</front-application-telone-center>
+
+
+<div class="main" fxLayout="row">
+
+    <mat-list fxFlex="70">
+        <div mat-subheader>Registered Vehicles</div>
+        <mat-list-item *ngFor="let vehicle of vehicleList$ | async ">
+          <mat-icon mat-list-icon>directions_car</mat-icon>
+          <!-- <div mat-line>{{vehicle.id}}</div>
+          <div mat-line> {{vehicle.registrationNumber}} </div> -->
+        </mat-list-item>
+
+
+      </mat-list>
+
+
+
+    <div class="container" fxFlex="30">
+      <form class="">
+        <mat-form-field class="example-full-width" appearance="standard">
+          <mat-label>Vehicle Reg Number</mat-label>
+          <input matInput type="text"/>
+
+          <mat-error></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="standard">
+          <mat-label>Vehicle Make</mat-label>
+          <input matInput type="text">
+
+          <mat-error></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="standard">
+          <mat-label>Vehicle Net Mass</mat-label>
+          <input matInput type="text">
+
+          <mat-error></mat-error>
+        </mat-form-field>
+      </form>
+
+      <div class="d-flex justify-content-center">
+        <button mat-raised-button class="login-button ">
+          Save
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+

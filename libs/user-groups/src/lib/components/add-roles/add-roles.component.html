@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Update Group Roles</h2>
+<mat-dialog-content>
+    <form
+    [formGroup]="groupRolesForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+<mat-form-field>
+    <mat-select placeholder="Roles" [formControl]="roles" multiple>
+      <mat-option [value]="1" (click)="selectAll(ev)"   
+      #ev
+       >SelectAll</mat-option>
+      <mat-option *ngFor="let roles of rolesList" [value]="roles">{{roles}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+  
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="formValue.emit(groupRolesForm.value)"
+      [disabled]="groupRolesForm.invalid" (click)="update(data.id)" mat-dialog-close="true"
+    >
+      Save
+    </button>
+  </mat-dialog-actions>

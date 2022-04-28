@@ -1,0 +1,25 @@
+<div fxLayout="column">
+  <h2 class="pl-2 mt-2">User Management</h2>
+  <div class="p-2">
+    <mat-tab-group>
+      <mat-tab label="User Accounts">
+              <mat-card class="mat-elevation-z10">
+                <mat-card-content>
+                  <mat-card [class]="'mat-elevation-z2 top-menu-'+backgroundColor">
+                    <mat-card-content>
+                  <form class="form-inline my-2 my-lg-0">
+                    <!-- <input type="search" ngModel name="key" id="searchCategory" class="form-control mr-sm-2" placeholder="Search..."> -->
+                <front-application-telone-button (click)="showAddUserDialog()">Add User</front-application-telone-button>
+                         </form>
+                        </mat-card-content>
+                      </mat-card>
+          <front-application-users-list></front-application-users-list>
+        </mat-card-content>
+      </mat-card>
+
+        </mat-tab>
+        <mat-tab label="User Registration">
+          <front-application-user-registration></front-application-user-registration>
+        </mat-tab>
+      </mat-tab-group>
+    </div>

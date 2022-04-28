@@ -1,0 +1,95 @@
+
+<h2 mat-dialog-title>Add Customer Asset</h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="assetForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+  <mat-card class="p-4 my-3">
+    <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Customer</mat-label>
+          <mat-select disableRipple formControlName="customerId" >
+            <mat-option *ngFor="let customer of customers" [value]="customer.id">{{customer.username}}
+            </mat-option>
+          </mat-select>
+                  </mat-form-field>
+
+      <mat-form-field class="col-6" appearance="outline">
+           <mat-label>Phone Number</mat-label>
+    <input matInput formControlName="phoneNumber" type="text" />
+  </mat-form-field>
+  </div>
+
+
+<h2>Property</h2>
+<div class="row">
+  <mat-form-field class="col-6" appearance="outline">
+    <mat-label>Location</mat-label>
+        <input matInput formControlName="location" type="text" />
+      </mat-form-field>
+
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Value</mat-label>
+        <input matInput formControlName="assetValue" type="number" />
+      </mat-form-field>
+</div>
+
+      <h2>Vehicle</h2>
+<div class="row">
+  <mat-form-field class="col-6" appearance="outline">
+    <mat-label>Model</mat-label>
+        <input matInput formControlName="model" type="text" />
+      </mat-form-field>
+   
+
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Registeration Number</mat-label>
+        <input matInput formControlName="regNumber" type="number" />
+      </mat-form-field>
+</div>
+<div class="row">
+  <mat-form-field class="col-6" appearance="outline">
+    <mat-label>Value</mat-label>
+        <input matInput formControlName="property.value" type="number" />
+      </mat-form-field>
+
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Weight</mat-label>
+        <input matInput formControlName="property.weight" type="number" />
+      </mat-form-field>
+</div>
+
+<div class="row">
+<mat-form-field class="col-6" appearance="outline">
+  <mat-label>Vehicle Make</mat-label>
+    <mat-select disableRipple formControlName="vehicleMake" >
+      <mat-option *ngFor="let make of vehicleMake" [value]="make">{{make}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="col-6" appearance="outline">
+    <mat-label>Vehicle Type</mat-label>
+    <mat-select disableRipple formControlName="vehicleMake" >
+      <mat-option *ngFor="let type of vehicleType" [value]="type">{{type}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+   </div>
+   </mat-card>
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel </button>
+
+  <button
+    mat-raised-button
+    color="success"    (click)="formValue.emit(assetForm.value)"
+    [disabled]="assetForm.invalid" (click)="save()" mat-dialog-close="true"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

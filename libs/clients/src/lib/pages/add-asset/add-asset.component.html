@@ -1,0 +1,273 @@
+<mat-card>
+<mat-stepper class="m-stepper" [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Select Insurance Type</ng-template>
+      <mat-form-field appearance="standard" class="first-btn-row">
+        <mat-label>Insurance Type</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let insuranceType of insuranceTypes" [value]="insuranceType.value">
+            {{insuranceType.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="first-btn-row">
+        <button class="next-btn" mat-raised-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Add asset">
+    <h2 class="form-title"> CUSTOMER DETAILS</h2> 
+    
+    <form [formGroup]="secondFormGroup">
+      <div fxLayout="row">
+        <h3 fxFlex="60"><b>Get info from diary?</b></h3>
+        <span fxFlex="10"></span>
+        <mat-slide-toggle fxFlex="30"></mat-slide-toggle>
+
+      </div>
+    
+      <div fxLayout="row">
+        <mat-form-field  appearance="standard" fxFlex="50">
+          <mat-label><b>Customer Fullname</b></mat-label>
+          <input matInput type="username" formControlName="customerFullname" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="standard" fxFlex="40">
+          <mat-label><b>Customer Phone</b></mat-label>
+          <input matInput type="username" formControlName="CustomerPhonenumber" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="example-full-width" appearance="standard">
+        <mat-label><b>Customer Address 1</b></mat-label>
+        <input matInput type="username" formControlName="firstCustomerAddress" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="standard">
+        <mat-label><b>Customer Address 2</b></mat-label>
+        <input matInput type="username" formControlName="secondCustomerAddress" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row">
+        <mat-form-field appearance="standard" fxFlex="60">
+          <mat-label><b>Customer Town</b></mat-label>
+          <input matInput type="username" formControlName="customerTown" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="standard" fxFlex="30">
+          <mat-label><b>Customer Date of Birth</b></mat-label>
+          <input matInput type="username" formControlName="customerDOB" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+
+      
+      <h2 class="form-title">OWNER DETAILS</h2>
+
+      <div fxLayout="row">
+        <mat-form-field appearance="standard" fxFlex="60">
+          <mat-label><b>Owner Fullname</b></mat-label>
+          <input matInput type="username" formControlName="ownerFullname" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="standard" fxFlex="30">
+          <mat-label><b>Owner Phone Number</b></mat-label>
+          <input matInput type="username" formControlName="ownerPhone" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="standard" fxFlex="60">
+          <mat-label><b>Vehicle Make</b></mat-label>
+          <input matInput type="username" formControlName="vehicleMake" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label><b>Vehicle Model</b></mat-label>
+          <input matInput type="username" formControlName="vehicleModel" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Vehicle Type</b></mat-label>
+          <input matInput type="username" formControlName="vehicleType" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label><b>Year of Manufacture</b></mat-label>
+          <input matInput type="username" formControlName="manufactureYear" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Vehicle Registration Number</b></mat-label>
+          <input matInput type="username" formControlName="vehicleRegNum" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label>Currency</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let currencyType of CurrencyTypes" [value]="currencyType.value">
+              {{currencyType.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="btn-row">
+        <button mat-raised-button matStepperPrevious class="back-btn">Back</button>
+        <button class="next-btn" mat-raised-button matStepperNext>Next</button>
+      </div> 
+    </form>
+   
+
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <h2 class="form-title">CONFIRM DETAILS TO SUBMIT</h2>
+    <form [formGroup]="thirdFormGroup">
+      <div fxLayout="row">
+        <mat-form-field  appearance="outline" fxFlex="50">
+          <mat-label><b>Customer Fullname</b></mat-label>
+          <input matInput type="username" formControlName="customerFullname" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="40">
+          <mat-label><b>Customer Phone</b></mat-label>
+          <input matInput type="username" formControlName="CustomerPhonenumber" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label><b>Customer Address 1</b></mat-label>
+        <input matInput type="username" formControlName="firstCustomerAddress" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label><b>Customer Address 2</b></mat-label>
+        <input matInput type="username" formControlName="secondCustomerAddress" />
+        <!-- <mat-icon matSuffix>user</mat-icon> -->
+        <mat-error></mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Customer Town</b></mat-label>
+          <input matInput type="username" formControlName="customerTown" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label><b>Customer Date of Birth</b></mat-label>
+          <input matInput type="username" formControlName="customerDOB" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+
+      
+      <h2 class="form-title">OWNER DETAILS</h2>
+
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Owner Fullname</b></mat-label>
+          <input matInput type="username" formControlName="ownerFullname" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label><b>Owner Phone Number</b></mat-label>
+          <input matInput type="username" formControlName="ownerPhone" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Vehicle Make</b></mat-label>
+          <input matInput type="username" formControlName="vehicleMake" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label><b>Vehicle Model</b></mat-label>
+          <input matInput type="username" formControlName="vehicleModel" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Vehicle Type</b></mat-label>
+          <input matInput type="username" formControlName="vehicleType" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label><b>Year of Manufacture</b></mat-label>
+          <input matInput type="username" formControlName="manufactureYear" />
+          <!-- <mat-icon matSuffix>user</mat-icon> -->
+          <mat-error></mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
+        <mat-form-field appearance="outline" fxFlex="60">
+          <mat-label><b>Vehicle Registration Number</b></mat-label>
+          <input matInput type="username" formControlName="vehicleRegNum" />
+          <mat-icon matSuffix>user</mat-icon>
+          <mat-error></mat-error>
+        </mat-form-field>
+        <span fxFlex="10"></span>
+        <mat-form-field appearance="outline" fxFlex="30">
+          <mat-label>Currency</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let currencyType of CurrencyTypes" [value]="currencyType.value">
+              {{currencyType.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="btn-row">
+        <button mat-raised-button matStepperPrevious class="back-btn">Back</button>
+        <button class="next-btn" mat-raised-button matStepperNext>Confirm</button>
+      </div> 
+    </form>
+  </mat-step>
+</mat-stepper>
+</mat-card>

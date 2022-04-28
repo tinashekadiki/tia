@@ -1,0 +1,24 @@
+<br>
+<form
+[formGroup]="emailForm"
+class="w-100 d-flex flex-column align-items-stretch"
+>
+<mat-form-field appearance="outline">
+    <mat-label>New Email</mat-label>
+    <input matInput formControlName="email" type="text" />
+  </mat-form-field>
+
+  <div fxLayout="row">
+    <span fxFlex></span>
+
+    <button mat-raised-button color="warn" mat-dialog-close> Cancel</button>
+    <button
+  mat-raised-button
+  color="primary"
+  (click)="formValue.emit(emailForm.value)"
+  [disabled]="emailForm.invalid" (click)="update()" mat-dialog-close="true"
+  >
+  Save
+  </button>
+  </div>
+</form>

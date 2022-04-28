@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": [],
+    "target": "ES2017",
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+},
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts", "../../libs/payment-status/src/index.ts"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts"]
+}

@@ -1,0 +1,263 @@
+<div class="main" fxLayout="column" *ngIf="quoteCreated !== true">
+  <front-application-telone-center fxFlex="100">
+    <h3>Get a quote</h3>
+  </front-application-telone-center>
+  <mat-card class="container" class="top-row">
+    <mat-card-content>
+      <form [formGroup]="options">
+        <div fxLayout="row" *ngIf="useDiary">
+          <div fxFlex="45" class="p-3">
+            <h3>Select Vehicle from Diary</h3>
+            <span fxFlex></span>
+            <!-- [disabled]="vehicles.length > 0" -->
+            <mat-slide-toggle
+              (change)="isDiary = $event.checked ? true : false"
+              color="primary"
+              fxLayout="row"
+            ></mat-slide-toggle>
+          </div>
+        </div>
+        <div fxLayout ="row">
+
+          <mat-form-field appearance="outline" fxFlex="45">
+            <mat-label>Select Vehicle Category</mat-label>
+            <mat-select formControlName="vehicleCategory" [(value)]="selected" (selectionChange)="getVehicleTypeId($event.value)">
+              <mat-option *ngFor="let item of categories" [value]="item.id">{{
+                item.name
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span fxFlex></span>
+          <mat-form-field appearance="outline" fxFlex="45">
+            <mat-label>Select Vehicle Type</mat-label>
+            <mat-select formControlName="motorVehicleTypeId"  >
+              <mat-option *ngFor="let item of vehicleTypes" [value]="item.motorVehicleTypeId">{{
+                item.typeSpecification
+                }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field appearance="outline" fxFlex="45">
+            <mat-label>Select Package</mat-label>
+            <mat-select formControlName="motorInsurancePackage">
+              <mat-option *ngFor="let item of packages" [value]="item">{{
+                item
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <span fxFlex></span>
+<!--          <div fxFlex="45" class="p-3">-->
+<!--            <h3>Is Renewal?</h3>-->
+<!--            <span fxFlex></span>-->
+<!--            <mat-slide-toggle-->
+<!--              formControlName="isRenewal"-->
+<!--              color="primary"-->
+<!--              fxLayout="row"-->
+<!--            ></mat-slide-toggle>-->
+<!--          </div>-->
+        </div>
+        <br />
+
+        <div fxLayout="row">
+          <ng-container *ngIf="isDiary; else elseTemplate">
+            <mat-form-field appearance="outline" fxFlex="45">
+              <mat-label>Select Vehicle</mat-label>
+
+              <mat-select formControlName="vehicleRegistrationNumber">
+                <mat-option
+                  *ngFor="let item of vehicles"
+                  [value]="item.regNumber"
+                  >{{
+                    item.vehicleMake + ' (' + item.regNumber + ')'
+                  }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <mat-form-field appearance="outline" fxFlex="45">
+              <mat-label>Vehicle Registration Number</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="vehicleRegistrationNumber"
+              />
+            </mat-form-field>
+          </ng-template>
+          <span fxFlex></span>
+          <mat-form-field appearance="outline" fxFlex="45">
+            <mat-label>Number of Terms</mat-label>
+            <input matInput max="3"  type="number"  min="1"formControlName="numberOfTerms" />
+
+          </mat-form-field>
+        </div>
+<br>
+        <div fxLayout="row">
+<mat-dialog-actions>
+          <button mat-raised-button
+          color="primary">Back</button>
+
+          <button
+          mat-raised-button
+          (click)="formValue.emit(options.value)"
+          [disabled]="options.invalid"
+          color="primary"
+            (click)="getQuote()"
+          >
+            GET QUOTE
+          </button>
+          </mat-dialog-actions>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="quoteCreated" fxLayout="column">
+  <front-application-telone-center fxFlex="100"
+    ><h3>Quotes</h3></front-application-telone-center
+  >
+
+  <div fxLayout="row">
+    <mat-form-field class="mr-2 ml-2" appearance="outline" fxFlex="35">
+      <mat-label>Sort By</mat-label>
+      <select matNativeControl name="car">
+        <option value="" selected></option>
+        <option>Insurer</option>
+        <option>Price</option>
+      </select>
+    </mat-form-field>
+    <mat-slider
+      class="mr-2 ml-2"
+      fxFlex="35"
+      color="primary"
+      thumbLabel
+      [displayWith]="formatLabel"
+      tickInterval="1000"
+      min="100"
+      max="50000"
+      step="5"
+      aria-label="units"
+    ></mat-slider>
+    <div>
+      <button class="outlined-btn">Clear All</button>
+    </div>
+  </div>
+
+  <div class="container" class="top-row" fxFlex="100" fxLayout="row wrap">
+    <mat-expansion-panel
+      fxFlex="100"
+      *ngFor="let quote of result; let i = index"
+      [expanded]="false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ quote.insurer }} </mat-panel-title>
+
+        <mat-panel-description>
+          <span fxFlex></span>
+          {{
+            quote.calculationResponse.total.value === null
+              ? 'ZWL0'
+              : quote.calculationResponse.total.currencyCode +
+                quote.calculationResponse.total.value
+          }}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-card fxFlex="45">
+        <div fxLayout="column">
+          <!-- <div fxLayout="row"> -->
+            <ng-container *ngIf="customer.username === 'Guest'; else elseTemplate">
+              <div fxLayout="row" >
+                <span fxFlex></span>
+                <mat-dialog-actions>
+                  <button mat-raised-button color="primary" (click)="buyNow(quote)">Buy Now</button>
+              </mat-dialog-actions>
+                </div>
+                <br>
+            </ng-container>
+
+            <ng-template #elseTemplate>
+              <div fxLayout="row" >
+                <span fxFlex></span>
+                  <button mat-raised-button color="primary"  (click)="addCart(quote)">Add Cart</button>
+                  <span fxFlex></span>
+                  <button mat-raised-button color="primary" (click)="buyNow(quote)">Buy Now</button>
+              </div>
+            </ng-template>
+          <!-- </div> -->
+          <br>
+        <div fxLayout="row">
+          <label>ZINARA: </label>
+          <span fxFlex></span>
+          <label> {{ quote.calculationResponse.zinara.value }}</label>
+        </div>
+        <div fxLayout="row">
+          <label>ZBC: </label>
+          <span fxFlex></span>
+          <label> {{ quote.calculationResponse.zbc.value }}</label>
+        </div>
+        <div fxLayout="row">
+          <label>INSURANCE: </label>
+          <span fxFlex></span>
+          <label> {{ quote.calculationResponse.insurance.value }}</label>
+        </div>
+
+      </div>
+      </mat-card>
+
+      <span fxFlex></span>
+      <mat-card fxFlex="45">
+        <div fxLayout="column">
+          <ng-container *ngIf="customer.username === 'Guest'; else elseTemplate">
+
+            <div fxLayout="row" >
+
+              <span fxFlex></span>
+              <button mat-raised-button color="primary" (click)="buyNow(quote)">Buy Now</button>
+            </div>
+          </ng-container>
+          <ng-template #elseTemplate>
+
+            <div fxLayout="row" >
+              <span fxFlex></span>
+              <button mat-raised-button color="primary"  (click)="addCart(quote)">Add Cart</button>
+              <span fxFlex></span>
+              <button mat-raised-button color="primary" (click)="buyNow(quote)">Buy Now</button>
+            </div>
+          </ng-template>
+          <br>
+          <div fxLayout="row" *ngFor="let addon of quote.addOns">
+            <label
+              >{{ addon.name }}
+              {{
+                addon.value === null
+                  ? ''
+                  : addon.value.currencyCode + addon.value.value
+              }}</label
+            >
+            <span fxFlex></span>
+            <mat-slide-toggle
+              (change)="processAddOn(i, addon, $event)"
+              color="primary"
+              fxLayout="row"
+            ></mat-slide-toggle>
+          </div>
+          <div fxLayout="row">
+            <label>INSURANCE: </label>
+            <span fxFlex></span>
+            <label> {{ quote.calculationResponse.insurance.value }}</label>
+          </div>
+          <br>
+          <div fxLayout="row">
+            <label><b>Total:</b> </label>
+            <span fxFlex></span>
+            <label> <b>{{ total[i] }}</b></label>
+          </div>
+
+        </div>
+      </mat-card>
+    </mat-expansion-panel>
+  </div>
+</div>

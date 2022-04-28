@@ -1,0 +1,133 @@
+<front-application-client-header></front-application-client-header>
+
+<front-application-telone-center><h3>Cart</h3></front-application-telone-center>
+
+<div class="container" *ngIf="cartItems.length > 0">
+  <div fxLayout="row">
+    <mat-list role="list" fxLayout="column" fxFlex="70">
+
+      <div class="mat-elevation-z2 m-2 p-3 h6" fxLayout="row">
+        <div fxFlex="30">
+          <div fxFlex></div>
+          Product
+          <div fxFlex></div>
+        </div>
+        <div fxFlex>
+          <div fxFlex></div>
+          Price
+          <div fxFlex></div>
+        </div>
+        <div fxFlex="30">
+          <div fxFlex></div>
+          Add Ons
+          <div fxFlex></div>
+        </div>
+        <div fxFlex>
+          <div fxFlex></div>
+          Total
+          <div fxFlex></div>
+        </div>
+        <div fxFlex>
+          <div fxFlex></div>
+          Actions
+          <div fxFlex></div>
+        </div>
+      </div>
+      <div class="mat-elevation-z2 m-2 p-2"
+           fxLayout="row" role="list-item"
+           *ngFor="let item of cartItems; let i=index">
+        <div fxFlex="30">
+          <div fxLayout="column">
+            <img src="assets/def-com-logo.jpg" width="10%" height="auto">
+            <div fxLayout="row" fxFlex="45">Insurer: {{item.motorVehicleQuotation.insurerName}}</div>
+            <!--            <div fxLayout="row" fxFlex="45">Vehicle: {{item.motorVehicleQuotation.insurerName}}</div>-->
+          </div>
+        </div>
+        <div fxFlex fxLayout="column">
+          <div fxFlex></div>
+          <div fxFlexAlign="center">
+            <div fxFlex></div>
+            {{item.motorVehicleQuotation.zwlPrice.currencyCode + item.motorVehicleQuotation.zwlPrice.value}}
+            <div fxFlex></div>
+          </div>
+          <div fxFlex></div>
+        </div>
+        <div fxFlex fxLayout="column">
+          <div fxFlex></div>
+          <div fxFlexAlign="center">
+            <div fxFlex></div>
+            {{item.addOns.name}}
+            <div fxFlex></div>
+          </div>
+        </div>
+        <div fxFlex fxLayout="column">
+          <div fxFlex></div>
+          <div fxFlexAlign="center">
+            <div fxFlex></div>
+            {{item.motorVehicleQuotation.zwlPrice.currencyCode + item.motorVehicleQuotation.zwlPrice.value}}
+            <div fxFlex></div>
+          </div>
+          <div fxFlex></div>
+
+        </div>
+        <div fxFlex fxLayout="column">
+          <div fxFlex></div>
+          <div fxFlexAlign="center">
+            <div fxFlex></div>
+            <button mat-icon-button (click)="deleteItemInCart(item.id.toString())" >
+
+              <mat-icon>delete</mat-icon>
+            </button>
+            <div fxFlex></div>
+          </div>
+          <div fxFlex></div>
+
+        </div>
+
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <div fxFlex="30">
+      <div class="container mt-5" fxLayout="column">
+        <div style="height: 10px; background-color: #04349c; margin-top: 5px"></div>
+
+        <div class="container m-3">
+          <div fxLayout="row">
+            <div fxFlex style="text-transform: uppercase">Cart Total</div><b>
+            <div fxFlex
+                 style="text-transform: uppercase; font-size: large">{{cartDetails.grandTotalPrice.currencyCode + cartDetails.grandTotalPrice.value}}</div>
+          </b> </div>
+        </div>
+
+        <div class="m-3">
+          <!-- <button class="outlined-btn btn-block"  (click)="clearCart()">
+            Clear Cart
+          </button> -->
+        </div>
+        <div class="m-3">
+          <div fxLayout="row">
+            <div>
+              <mat-checkbox color="primary">
+              </mat-checkbox>
+            </div>
+            <div fxFlex>&nbsp;&nbsp; I agree to the Terms and Conditions</div>
+          </div>
+        </div>
+        <div class="m-3">
+          <button class="outlined-btn btn-block" (click)="checkout()">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container" *ngIf="cartItems.length === 0">
+  <div class="alert alert-info">
+    The cart is currently empty.
+  </div>
+</div>
+

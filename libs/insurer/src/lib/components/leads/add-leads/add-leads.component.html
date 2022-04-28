@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>{{local_data.id ? 'Update Lead' : 'Add Lead'}}</h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="leadForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+  <mat-card class="p-4 my-3">
+    <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" type="text" />
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="text" />
+      </mat-form-field>
+</div>
+
+<div class="row">
+  <mat-form-field class="col-6" appearance="outline">
+    <mat-label>Product</mat-label>
+        <mat-select disableRipple formControlName="productId" >
+          <mat-option *ngFor="let productId of productIds" [value]="productId.id">{{productId.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Notes</mat-label>
+        <textarea matInput formControlName="notes" type="text"></textarea>
+      </mat-form-field>
+   </div>
+
+  </mat-card>
+
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel </button>
+
+  <button *ngIf="isAddLead; else update"
+    mat-raised-button
+    color="success"    (click)="formValue.emit(leadForm.value)"
+    [disabled]="leadForm.invalid" (click)="save()" mat-dialog-close="true"
+  >
+    Save
+  </button>
+  <ng-template #update>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="formValue.emit(leadForm.value)"
+      [disabled]="leadForm.invalid"
+      (click)="updateLead()"
+      mat-dialog-close="true"
+    >
+      Update
+    </button>
+  </ng-template>
+</mat-dialog-actions>

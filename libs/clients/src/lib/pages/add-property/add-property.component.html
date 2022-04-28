@@ -1,0 +1,21 @@
+<mat-card>
+    <h1><b>ADD PROPERTY</b></h1>
+    <form [formGroup]="addPropertyForm" fxLayout="column">
+
+        <mat-form-field  appearance="standard" >
+            <mat-label><b>Location</b></mat-label>
+            <input matInput formControlName="location" />
+            <mat-error></mat-error>
+          </mat-form-field>
+
+          <mat-form-field  appearance="standard" >
+            <mat-label><b>Value</b></mat-label>
+            <input matInput formControlName="value" />
+            <mat-error></mat-error>
+          </mat-form-field>
+
+          <div class="first-btn-row">
+            <button class="next-btn" mat-raised-button (click)="AddProperty()">Add Property</button>
+          </div>
+    </form>
+</mat-card>

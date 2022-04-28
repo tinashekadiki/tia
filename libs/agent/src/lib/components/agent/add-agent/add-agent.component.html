@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>Add Agent </h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="agentForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+    <mat-card class="p-4 my-3">
+      <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Agent Name</mat-label>
+          <input matInput formControlName="serviceAgentName" type="text" />
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" type="text" />
+        </mat-form-field>
+
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Enter email</mat-label>
+          <input matInput placeholder="nm@example.com" formControlName="email"  required>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input matInput formControlName="phoneNumber" type="text" />
+        </mat-form-field>
+        <mat-form-field class="col-6"  appearance="outline">
+          <mat-label>Address Line 1</mat-label>
+          <input matInput formControlName="addressLine1" type="text" />
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Collection Point Name</mat-label>
+          <input matInput formControlName="collectionPointName" type="text" />
+        </mat-form-field>
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Insurer Name</mat-label>
+          <mat-select formControlName="insurerId"   required>
+            <mat-option *ngFor="let insurer of insurers" [value]="insurer.id">{{insurer.companyProfile.name}}</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="countryId"   required>
+            <mat-option *ngFor="let country of countries" [value]="country.id">{{country.name}}</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="cityId"   required>
+            <mat-option *ngFor="let city of cities" [value]="city.id">{{city.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+    </mat-card>
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+<button mat-raised-button color="warn" mat-dialog-close> Cancel</button>
+
+ <button
+    mat-raised-button
+    color="primary"
+    (click)="formValue.emit(agentForm.value)"
+    [disabled]="agentForm.invalid" (click)="save()" mat-dialog-close="true"
+  >Save
+  </button>
+</mat-dialog-actions>

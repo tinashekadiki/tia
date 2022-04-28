@@ -1,0 +1,122 @@
+<br>
+<div *ngIf="user" class="container" fxLayout="row" fxLayoutAlign="center none">
+  <div fxFlex="95%">
+    <mat-card>
+      <mat-card-content>
+        <h2>{{user.username}}'s Profile</h2>
+        <div class="row">
+
+          <div class="col-4">
+            <img (click)="openUploadImage()" class="img img-circle" width="100" *ngIf="profile !== null"
+            [src]="profile">
+       <div *ngIf="profile === null" (click)="openUploadImage()" fxFlex="80" class="img-circle">
+       </div>
+          </div>
+
+          <div class="col-5">
+            <div class="profile-card">
+              <h4 class="profile-item"><b>Email :</b> {{ user.email }}</h4>
+              <h4 class="profile-item"><b>Mobile Number :</b> {{ user.mobileNumber}}</h4>
+             <div class="row">
+               <div class="col-6">
+              <h4 class="profile-item"><b>Active : </b>
+                <nz-tag [nzColor]="user.active ? 'green' : 'red'">{{user.active ? 'Active' : 'Inactive'}}</nz-tag>
+                </h4>
+                <h4 class="profile-item"><b>Blocked : </b>
+                  <nz-tag [nzColor]="user.blocked ? 'green' : 'red'">{{user.blocked ? 'Active' : 'Blocked'}}</nz-tag>
+                </h4>
+            </div>
+            <div class="col-6">
+              <mat-slide-toggle
+              [ngModel]="user.active"
+              (change)="updateStatus()"
+              color="primary"
+              >{{ userActive ? 'Active' : 'Inactive' }}</mat-slide-toggle
+              >
+              <br><br>
+              <mat-slide-toggle
+              [ngModel]="user.blocked"
+              (change)="updateBlockStatus()"
+              color="primary"
+              >{{ userActive ? 'Blocked' : 'Active' }}</mat-slide-toggle
+              >
+            </div>
+            </div>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <h4 class="profile-item login"><b>Last Log In :</b> {{ user.lastLoginDate | date}}</h4>
+          </div>
+
+          <div fxFlex="65%" fxFlex.sm="95%" fxFlex.xs="950%">
+            <mat-tab-group>
+              <mat-tab label="Permissions">
+                <br />
+                <div class="col-12 text-right mb-2">
+                  <button
+                    mat-raised-button
+                    class="add-button"
+                    (click)="showUpdatePermissionsDialog()"
+                  >
+                    Update Permissions
+                  </button>
+                </div>
+                <mat-selection-list [multiple]="false">
+                  <mat-list-option *ngFor="let perm of permissions">
+                    {{ perm }}
+                  </mat-list-option>
+                </mat-selection-list>
+              </mat-tab>
+              <mat-tab label="Roles">
+                <br />
+                <div class="col-12 text-right mb-2">
+                  <button
+                    mat-raised-button
+                    class="add-button"
+                    (click)="showUpdateRolesDialog()"
+                  >
+                    Update Roles
+                  </button>
+                </div>
+                <mat-selection-list [multiple]="false">
+                  <mat-list-option *ngFor="let role of roles">
+                    {{ role }}
+                  </mat-list-option>
+                </mat-selection-list>
+              </mat-tab>
+              <mat-tab label="User Groups">
+                <br />
+                <div class="col-12 text-right mb-2">
+                  <button
+                    mat-raised-button
+                    class="add-button"
+                    (click)="showUpdateGroupDialog()"
+                  >
+                    Update Group
+                  </button>
+                </div>
+
+                <mat-selection-list [multiple]="false">
+                  <mat-list-option *ngFor="let group of groups">
+                    {{ group.name }}
+                  </mat-list-option>
+                </mat-selection-list>
+              </mat-tab>
+            </mat-tab-group>
+
+
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+
+</div>
+
+
+
+

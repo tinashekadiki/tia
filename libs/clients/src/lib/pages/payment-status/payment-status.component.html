@@ -1,0 +1,71 @@
+<mat-card  fxFlex="80">
+    <mat-card-header>
+        <mat-card-title> Check Payment Status </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Enter Order Number</mat-label>
+        <input matInput id="orderNumber" type="text" [(ngModel)]="value">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="checkPaymentStatus()" >Check</button>
+      
+    <div>
+        <div *ngIf="payment !== null && payment !== undefined" fxLayout="column">
+            <div fxLayout="row">
+                <div class="title" fxFlex="40">
+                    <h4>Payment Account</h4>
+                </div>
+                <div class="content" fxFlex="40">
+                    <h4>{{payment.paymentAccount}}</h4>
+                </div>
+            </div>
+            
+
+            
+
+            <div fxLayout="row">
+                <div class="title" fxFlex="40">
+                    <h4>Order Number</h4>
+                </div>
+                <div class="content" fxFlex="40">
+                    <h4>{{payment.orderNumber}}</h4>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <div class="title" fxFlex="40">
+                    <h4>Payment Number</h4>
+                </div>
+                <div class="content" fxFlex="40">
+                    <h4>{{payment.paymentNumber}}</h4>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <div class="title" fxFlex="40">
+                    <h4>Reference</h4>
+                </div>
+                <div class="content" fxFlex="40">
+                    <h4>{{payment.paynowReference}}</h4>
+                </div>
+            </div>
+
+            <div fxLayout="row">
+                <div class="title" fxFlex="40">
+                    <h4> <b> Status</b></h4>
+                </div>
+                <div class="content" fxFlex="40">
+                    <h4> <b>{{payment.result}}</b></h4>
+                </div>
+            </div>
+            
+        </div>
+            
+       </div>
+    </mat-card-content>
+    
+    </mat-card>

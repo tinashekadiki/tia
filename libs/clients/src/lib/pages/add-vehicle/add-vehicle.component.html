@@ -1,0 +1,71 @@
+<mat-card>
+
+<form [formGroup]="addVehicleForm" fxLayout="column" fxFlex="70">
+
+<h1><b>ADD VEHICLE</b></h1>
+    <mat-form-field  appearance="outline" >
+        <mat-label><b>Registration Number</b></mat-label>
+        <input matInput formControlName="regNumber" />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="first-btn-row">
+      <mat-label>Vehicle Make</mat-label>
+      <mat-select formControlName="vehicleMake">
+        <mat-option *ngFor="let vehicleMake of vehicleMakes" [value]="vehicleMake.value" >
+          {{vehicleMake.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field  appearance="outline">
+        <mat-label><b>Model</b></mat-label>
+        <input matInput formControlName="model" />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="first-btn-row">
+        <mat-label>Vehicle Type</mat-label>
+        <mat-select formControlName="vehicleType">
+          <mat-option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType.value" >
+            {{vehicleType.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    <mat-form-field  appearance="outline">
+        <mat-label><b>Value</b></mat-label>
+        <input matInput formControlName="value" type="number" />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+
+    <mat-form-field  appearance="outline">
+        <mat-label><b>Weight</b></mat-label>
+        <input matInput formControlName="weight" type="number" />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+    <div class="first-btn-row">
+      <button class="next-btn" color="primary"
+              (click)="formValue.emit(addVehicleForm.value)"
+              [disabled]="addVehicleForm.invalid"
+              mat-raised-button (click)="addVehicle()">Add Vehicle</button>
+    </div>
+  </form>
+
+  <mat-list>
+    <div mat-subheader><b>Registered Vehicles</b></div>
+    <mat-list-item *ngFor="let vehicle of cars">
+      <mat-icon mat-list-icon>directions_car</mat-icon>
+      <div mat-line>{{vehicle.vehicleMake}}</div>
+      <div mat-line>{{vehicle.model}}</div>
+      <div mat-line> {{vehicle.regNumber}} </div>
+    </mat-list-item>
+
+
+  </mat-list>
+
+</mat-card>

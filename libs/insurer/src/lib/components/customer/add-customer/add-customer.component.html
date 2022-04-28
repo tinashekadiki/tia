@@ -1,0 +1,127 @@
+<h2 mat-dialog-title>Add Customer</h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="customerForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+
+  <mat-card class="p-4 my-3">
+    <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" type="text" />
+              </mat-form-field>
+
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Middle names</mat-label>
+                <input matInput formControlName="middleNames" type="text" />
+              </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastName" type="text" />
+        </mat-form-field>
+
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" type="text" />
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+         <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Address Line</mat-label>
+          <textarea matInput formControlName="addressLine1" type="text"></textarea>
+            </mat-form-field>
+
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Address Line2</mat-label>
+          <textarea matInput formControlName="addressLine2" type="text"></textarea>
+              </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" type="text" />
+               </mat-form-field>
+
+       <mat-form-field class="col-6" appearance="outline">
+        <mat-select placeholder="Country" formControlName="country" >
+          <mat-option  *ngFor="let country of countries" [value]="country?.id">{{
+            country?.name
+          }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+     </div>
+
+     <div class="row">
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input matInput formControlName="phoneNumber" type="number" />
+       </mat-form-field>
+
+     <mat-form-field class="col-6" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="text" />
+           </mat-form-field>
+   </div>
+
+   <div class="row">
+    <mat-form-field class="col-6" appearance="outline">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+     </mat-form-field>
+
+   <mat-form-field class="col-6" appearance="outline">
+    <mat-label>Identification Type</mat-label>
+    <mat-select disableRipple formControlName="identificationType">
+      <mat-option *ngFor="let idType of idTypes" [value]="idType.value">{{idType.value}}
+      </mat-option>
+    </mat-select>
+     </mat-form-field>
+ </div>
+
+ <div class="row">
+  <mat-form-field class="col-6" appearance="outline">
+    <mat-label>ID Number/Passport</mat-label>
+    <input matInput formControlName="identificationValue" type="text" />
+</mat-form-field>
+
+</div>
+  </mat-card>
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+
+    <button
+    mat-raised-button
+    color="primary"
+    (click)="formValue.emit(customerForm.value)"
+    [disabled]="customerForm.invalid"
+    (click)="save()"
+    mat-dialog-close="true"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
+
+  
+   
+
+    
+   
+
+
+
+
+   

@@ -1,0 +1,87 @@
+<h3 class="page-title">
+  Dashboard Overview
+</h3>
+<div>
+  <div fxLayout="row" fxLayoutGap="10">
+
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Number of Agents</h4>
+      <h1>{{numberOfAgents}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Number of Active Agents</h4>
+      <h1>{{activeAgents}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Number of InActive Agents</h4>
+      <h1>{{inActiveAgents}}</h1>
+    </div>
+
+
+  </div>
+  <div fxLayout="row" fxLayoutGap="10">
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Total sales</h4>
+      <h1>{{totalSales}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Total Monthly Sales</h4>
+      <h1>{{totalSales}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Total Orders</h4>
+      <h1>{{numberOfOrders}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Completed Orders</h4>
+      <h1>{{completedOrders}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Pending Orders</h4>
+      <h1>{{pendingOrders}}</h1>
+    </div>
+    <!--    <div class="dash-item" fxFlex="25" fxLayout="column">-->
+    <!--      <h5>Insurance Types</h5>-->
+    <!--      <p>Insurance types bought in the last month</p>-->
+    <!--    </div>-->
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10">
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Customers</h4>
+      <h1>{{numberOfCustomers}}</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Collections</h4>
+      <h1>$11,812</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h4>Incomplete orders</h4>
+      <h1>50</h1>
+    </div>
+    <div class="dash-item" fxFlex="25" fxLayout="column">
+      <h5>Expired vs Current Products</h5>
+    </div>
+  </div>
+
+  <div class="dash-item">
+    <div fxLayout="row">
+      <div fxFlex="40">
+        <h5>Sales Overview</h5>
+        <p>Profit Sharing Between Customers</p>
+      </div>
+      <span fxFlex></span>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Period</mat-label>
+          <select matNativeControl>
+            <option value="volvo">Monthly</option>
+            <option value="saab">Yearly</option>
+          </select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,35 @@
+.mat-radio-button~.mat-radio-button {
+  margin-left: 16px
+}
+.mat-raised-button ~ .mat-raised-button {
+  margin-left: 10px;
+}
+
+.selectWrapper {
+  border-radius: 36px;
+  display: inline-block;
+  overflow: hidden;
+  width: 300px;
+  height: 40px;
+  background: #cccccc;
+  border: 1px solid #cccccc;
+}
+
+.selectBox {
+  width: 140px;
+  height: 40px;
+  border: 0px;
+  outline: none;
+}
+
+.main-button {
+  background: #04349c;
+  color: #ffffff;
+  margin-left: auto;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.mat-expansion-panel {
+  margin: 15px !important;
+}

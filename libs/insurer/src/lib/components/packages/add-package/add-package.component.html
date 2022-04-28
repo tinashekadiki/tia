@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>Add Package</h2>
+<mat-dialog-content>
+  <form
+    [formGroup]="packageForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+    <div class="row">
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-select placeholder="Package" formControlName="productId">
+          <mat-option
+            *ngFor="let product of productTypeList"
+            [value]="product.id"
+            >{{ product.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-select placeholder="Package" formControlName="motorInsurancePackage">
+          <mat-option *ngFor="let package of packagesList" [value]="package">{{
+            package
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex="45">
+        <mat-label>Number of Terms</mat-label>
+        <input matInput type="text" formControlName="numberOfTerms" />
+      </mat-form-field>
+
+
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Vehicle Category</mat-label>
+        <mat-select formControlName="vehicleCategory" [(ngModel)]="selectedCategory" (selectionChange)="getVehicleTypes()">
+          <mat-option *ngFor="let category of categories"  [value]="category?.id">
+            {{category?.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field >
+
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Vehicle Type</mat-label>
+        <mat-select formControlName="motorVehicleTypeId" [disabled]="notSelected">
+          <mat-option  *ngFor="let vehicleType of vehicleTypes"  [value]="vehicleType?.motorVehicleTypeId">
+            {{vehicleType?.typeSpecification}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field   >
+    </div>
+
+    <div class="row">
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-select placeholder="Currency" formControlName="currencycode">
+          <mat-option
+            *ngFor="let currency of currencyList"
+            [value]="currency.code"
+            >{{ currency.code }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="col-6" appearance="outline">
+        <mat-label>Cost</mat-label>
+        <input matInput formControlName="zvalue" type="number" />
+      </mat-form-field>
+    </div>
+
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="formValue.emit(packageForm.value)"
+    [disabled]="packageForm.invalid"
+    (click)="save()"
+    mat-dialog-close="true"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

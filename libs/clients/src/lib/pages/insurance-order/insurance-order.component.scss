@@ -1,0 +1,74 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.create-btn {
+  background: #04349c;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+.pay-btn {
+  background: #04349c;
+  color: #ffffff;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #04349c !important;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  color: #04349c !important;
+}
+
+.top-row {
+  margin-bottom: 10px;
+  margin-right: 30px;
+}
+
+.package-card {
+  margin-right: 30px;
+  padding-top: 20px;
+}
+
+.order-card {
+  margin-right: 30px;
+  padding-top: 20px;
+}
+
+.payment-card {
+  margin-right: 30px;
+}
+
+.payment-field {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.order-card .mat-form-field {
+  width: 100%;
+}
+
+.package-card .mat-form-field {
+  width: 100%;
+}
+
+.btn-row {
+  display: flex;
+  margin-top: 0;
+  margin-right: 30px;
+  justify-content: center;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.pay-btn-row{
+    display: flex;
+    justify-content: center;
+}
+
+

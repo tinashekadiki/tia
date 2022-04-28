@@ -1,0 +1,25 @@
+<div fxLayout="row" class="top-row">
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+</div>
+
+<h1 mat-dialog-title class="dialog-title"><b>Enter the OTP to verify your account</b></h1>
+<mat-dialog-content class="dialog">
+  <p class="message">Check your email or phone for the OTP</p>
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <ng-otp-input (onInputChange)="onOtpChange($event)" [config]="{length: 6}"></ng-otp-input>
+    <span fxFlex></span>
+  </div>
+</mat-dialog-content>
+
+<div fxLayout="row" class="pt-4">
+  <button fxFlex="50" class="m-2" (click)="resendOtp()" mat-raised-button>
+    Resend OTP
+  </button>
+
+  <button fxFlex="50" class="m-2" (click)="confirmOtp()" color="primary" [disabled]="token === null" mat-raised-button>
+    Verify OTP
+  </button>
+</div>

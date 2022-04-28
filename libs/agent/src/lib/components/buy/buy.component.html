@@ -1,0 +1,17 @@
+<mat-dialog-content fxLayout="column">
+  <ng-container *ngIf="data.showPhoneNumberInput; else elseTemplate">
+    <h2>Enter phone number</h2>
+    <mat-form-field appearance="outline" fxFlex="100">
+      <mat-label>Enter Phone Number</mat-label>
+      <input [(ngModel)]="phoneNumber" #ctrl="ngModel" matInput />
+    </mat-form-field>
+    <button (click)="proceedToPay()" color="primary" fxFlex="100" mat-raised-button>Buy</button>
+  </ng-container>
+  <ng-template #elseTemplate >
+    <h2> Cash Payment</h2>
+    <button (click)="proceedToPay()" color="primary" fxFlex="100" mat-raised-button>PAID</button>
+  </ng-template>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close>Cancel </button>
+</mat-dialog-actions>

@@ -1,0 +1,95 @@
+<div fxLayout="column">
+  <h2 class="pl-2 mt-2">Packages</h2>
+  <div class="p-2">
+    <mat-card class="mat-elevation-z2">
+      <mat-card-content>
+        <front-application-top-menu>
+
+           <front-application-telone-button  (click)="showAddPackageDialog()">Add
+            Package
+          </front-application-telone-button>
+          <front-application-telone-button (click)="showUploadPackageDialog()"
+            >Upload Package
+          </front-application-telone-button>
+          <div>
+            <front-application-telone-button  matTooltip="Download Sample Excel"  matTooltipPosition="above" >
+              <a href="/assets/sample-quotations-file_new.csv"
+                 target="_blank"
+                 download="Sample Quotations.csv"
+              >Download Sample</a>
+             </front-application-telone-button>
+          </div>
+        </front-application-top-menu>
+
+        <mat-table
+          [dataSource]="dataSource"
+          matSort
+          class="w-100 my-3 mat-elevation-z2"
+        >
+          <ng-container matColumnDef="motorInsurancePackages">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Motor Insurance Packages</mat-header-cell
+            >
+            <mat-cell *matCellDef="let res">
+              {{ res.motorInsurancePackages }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="zwlPrice">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Price</mat-header-cell
+            >
+            <mat-cell *matCellDef="let res"
+              >{{ res.zwlPrice.value }}{{ res.zwlPrice.currencyCode }}
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="isRenewal">
+            <mat-header-cell *matHeaderCellDef mat-sort-header
+              >Renewal</mat-header-cell
+            >
+            <mat-cell *matCellDef="let res"> {{ res.isRenewal }} </mat-cell>
+          </ng-container>
+
+          
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link"> 
+              <a (click)="showUpdateDialog('Update',element)">
+                 <mat-icon class="mat-18">visibility</mat-icon>
+              </a>  
+
+            </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="noData" >
+            <mat-footer-cell *matFooterCellDef class="noData" >
+                <b>No data.</b>
+            </mat-footer-cell>
+        </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row
+            class="cursor-pointer"
+            matRipple
+            *matRowDef="let data; columns: displayedColumns"
+          ></mat-row>
+        </mat-table>
+
+        <mat-paginator
+          class="mat-elevation-z2"
+          [pageSizeOptions]="[10, 20, 50]"
+          [pageSize]="10"
+        ></mat-paginator>
+
+
+<!-- <ng-template #noRecord>
+  <div>
+   No Record found
+
+   </div>
+ </ng-template> -->
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

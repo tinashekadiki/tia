@@ -1,0 +1,123 @@
+<div class="main" fxLayout="column">
+  <front-application-telone-center fxFlex="100">
+    <h3>My Order</h3>
+  </front-application-telone-center>
+  <mat-card class="container" fxFlex="50" fxLayout="row" class="top-row" *ngIf="orderCreated !== true">
+
+
+    <div class="package-card" fxFlex="50">
+      <mat-card-content>
+        <mat-form-field appearance="fill">
+          <mat-label>Selected</mat-label>
+          <mat-select [(ngModel)]="order.motorInsurancePackage">
+            <mat-option *ngFor="let package of packages" [value]="package">{{package}}</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+
+        <p>
+          <mat-form-field appearance="standard">
+            <mat-label>Number of Terms</mat-label>
+            <input matInput id="numberOfTerms" placeholder="Enter Number of terms" [(ngModel)]="order.numberOfTerms">
+            <mat-icon matSuffix>number</mat-icon>
+
+          </mat-form-field>
+        </p>
+
+      </mat-card-content>
+    </div>
+
+    <div class="order-card" fxFlex="50">
+      <!-- <mat-card-header>
+        <front-application-telone-center fxFlex="100">
+          <mat-card-title>
+            Create Order
+          </mat-card-title>
+        </front-application-telone-center>
+
+      </mat-card-header> -->
+      <mat-card-content>
+        <mat-form-field appearance="standard">
+          <mat-label>Vehicle Registration Number</mat-label>
+          <input [(ngModel)]="order.vehicleRegistration" matInput id="vehicleRegistration"
+            placeholder="Enter Vehicle Registration Number" name="vehicleRegistration">
+          <mat-icon matSuffix>number</mat-icon>
+
+        </mat-form-field>
+
+        <p>
+          <mat-form-field appearance="standard">
+            <mat-label>Phone Number</mat-label>
+            <input matInput id="phoneNumber" placeholder="Enter Phone Number" [(ngModel)]="order.phoneNumber">
+            <mat-icon matSuffix>phone</mat-icon>
+
+          </mat-form-field>
+        </p>
+
+      </mat-card-content>
+
+
+
+    </div>
+    
+  </mat-card>
+  <div class="btn-row" fxLayout="row" *ngIf="orderCreated !== true">
+      <button mat-raised-button #btn type="button" class="create-btn" (click)=" btn.disabled = true;"
+        (click)="CreateOrder()">Create Order</button>
+    </div>
+  <div class="container" fxFlex="40">
+
+  </div>
+  <mat-card class="payment-card" *ngIf="orderCreated === true">
+    <mat-card-header>
+      <mat-card-title>
+        Make Payment
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-content">
+      <mat-form-field appearance="standard" class="order-field">
+        <mat-label>Order Number</mat-label>
+        <input [(ngModel)]="orderNumber" matInput id="orderNumber" placeholder="Order Number" name="orderNumber"
+          disabled="true">
+        <mat-icon matSuffix>number</mat-icon>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="payment-field">
+        <mat-label>Payment Account</mat-label>
+        <input [(ngModel)]="paym.paymentAccount" matInput id="paymentAccount" placeholder="Payment Account"
+          name="paymentAccount">
+        <mat-icon matSuffix>number</mat-icon>
+
+      </mat-form-field>
+      <mat-form-field appearance="standard" class="network-field">
+        <mat-label>Network Provider</mat-label>
+        <!-- <input [(ngModel)]="paym.networkProvider" matInput id="networkProvider" placeholder="networkProvider"
+          name="networkProvider"> -->
+        <mat-select [(ngModel)]="paymentMethod">
+          <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">{{paymentMethod.name}}
+          </mat-option>
+        </mat-select>
+        <mat-icon matSuffix>string</mat-icon>
+
+      </mat-form-field>
+
+      <p>
+        <!-- <mat-form-field appearance="fill">
+      <mat-label>Selected</mat-label>
+      <mat-select [(ngModel)]="paymentMethod">
+        <mat-option *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">{{paymentMethod.name}}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+      </p>
+
+    </mat-card-content>
+    <div class="pay-btn-row">
+      <button type="submit" mat-raised-button class="pay-btn" (click)="CreatePayment()">Pay</button>
+    </div>
+    
+  </mat-card>
+
+</div>
+
+<!-- [routerLink]="'/client/create-payment'" -->

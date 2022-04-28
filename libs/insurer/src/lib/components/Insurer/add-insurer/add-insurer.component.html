@@ -1,0 +1,177 @@
+<!-- <div class="modal-container"> -->
+  <h2 mat-dialog-title>{{local_data.id ?'Update Insurer': 'Add Insurer'}}</h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="form"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+
+    <mat-stepper [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <!-- <form [formGroup]="firstFormGroup" class="w-100 d-flex flex-column align-items-stretch"> -->
+          <ng-template matStepLabel>Fill Company Details</ng-template>
+          <div class="row">
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input matInput formControlName="companyName" type="text" />
+              </mat-form-field>
+    
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Company Email</mat-label>
+                <input matInput formControlName="companyEmail" type="email" />
+              </mat-form-field>
+    
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Company Phone Number</mat-label>
+                <input matInput formControlName="companyPhoneNumber" type="text" />
+              </mat-form-field>
+    
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Registration</mat-label>
+                <input matInput formControlName="registrationNumber" type="text" />
+              </mat-form-field>
+    
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Address Line 1</mat-label>
+                <textarea formControlName="addressLine1" matInput></textarea>
+            </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Address Line 2</mat-label>
+                <textarea formControlName="addressLine2" matInput></textarea>
+            </mat-form-field>
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Address Line 3</mat-label>
+                <textarea formControlName="addressLine3" matInput></textarea>
+            </mat-form-field>
+    
+          </div>
+                <div>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        <!-- </form> -->
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Fill User Details">
+        <!-- <form [formGroup]="secondFormGroup" class="w-100 d-flex flex-column align-items-stretch"> -->
+          <div class="row">
+            <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Admin Username</mat-label>
+                <input matInput formControlName="adminUsername" type="text" />
+              </mat-form-field>
+          <mat-form-field appearance="outline" class="col-6">
+            <mat-label>Admin Email</mat-label>
+            <input matInput formControlName="adminEmail" type="email"/>
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline" class="col-6">
+            <mat-label>Admin Phone</mat-label>
+            <input matInput formControlName="adminPhoneNumber" type="text" />
+          </mat-form-field>
+        </div>
+    
+        <div class="row">
+            <mat-form-field class="col-6"  appearance="outline">
+                <mat-label>Contact Person Email</mat-label>
+                <input matInput formControlName="contactPersonEmail" type="email" />
+              </mat-form-field>
+    
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Contact Person First Name</mat-label>
+                <input matInput formControlName="contactPersonFirstName" type="text" />
+              </mat-form-field>
+    
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Contact Person Last Name</mat-label>
+                <input matInput formControlName="contactPersonLastName" type="text" />
+              </mat-form-field>
+    
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Contact Phone Number</mat-label>
+                <input matInput formControlName="contactPersonPhoneNumber" type="text" />
+              </mat-form-field>
+        </div>          <div>
+            <button mat-raised-button matStepperPrevious>Back</button>
+          </div>
+        <!-- </form> -->
+      </mat-step>
+
+    </mat-stepper>
+    
+   
+
+  <!-- <mat-card class="p-4 my-3">
+    <mat-card-title class="mb-3">User Details</mat-card-title>
+
+    <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Admin Username</mat-label>
+            <input matInput formControlName="adminUsername" type="text" />
+          </mat-form-field>
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Admin Email</mat-label>
+        <input matInput formControlName="adminEmail" type="email"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Admin Phone</mat-label>
+        <input matInput formControlName="adminPhoneNumber" type="text" />
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field class="col-6"  appearance="outline">
+            <mat-label>Contact Person Email</mat-label>
+            <input matInput formControlName="contactPersonEmail" type="email" />
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Contact Person First Name</mat-label>
+            <input matInput formControlName="contactPersonFirstName" type="text" />
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Contact Person Last Name</mat-label>
+            <input matInput formControlName="contactPersonLastName" type="text" />
+          </mat-form-field>
+
+          <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Contact Phone Number</mat-label>
+            <input matInput formControlName="contactPersonPhoneNumber" type="text" />
+          </mat-form-field>
+    </div>
+
+  </mat-card> -->
+
+
+  </form>
+  </mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button     color="warn"
+  mat-dialog-close> Cancel</button>
+
+  <button *ngIf="isAddInsurer; else update"
+    mat-raised-button
+    (click)="formValue.emit(form.value)"
+    [disabled]="form.invalid"
+    color="primary"
+    (click)="submitForm()"
+     mat-dialog-close="true"
+  >
+    Save
+  </button>
+  <ng-template #update>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="formValue.emit(form.value)"
+      [disabled]="form.invalid"
+      (click)="updateInsurer()"
+      mat-dialog-close="true"
+    >
+      Update
+    </button>
+  </ng-template>
+</mat-dialog-actions>
+<!-- </div> -->

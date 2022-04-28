@@ -1,0 +1,77 @@
+
+<div *ngIf="insurerDetails">
+  <h2 [routerLink]="['/insurer']"
+  >Insurer / Details</h2>
+  <div class="d-flex flex-column align-items-stretch mx-3">
+    <mat-divider></mat-divider><br />
+
+ <mat-card class="example-card">
+  <mat-card-header>
+    <div class="row">
+      <!-- <div class="col-5">
+        <img  class="img img-circle" width="100" 
+        src="{{insurerDetails.logoUrl}}">
+      </div> -->
+      <div class="col-12">
+        <mat-card-title>{{insurerDetails.companyProfile.name}}</mat-card-title>
+        <mat-card-subtitle>Reg Number: {{insurerDetails.registrationNumber}}</mat-card-subtitle>
+        
+        <b>Username:</b> {{insurerDetails.admin.username}}<br>
+        <b>Email:</b> {{insurerDetails.admin.email}}<br>
+        <b>Phone Number:</b> {{insurerDetails.admin.phoneNumber}}  
+      </div>
+    </div>
+  
+  </mat-card-header>
+<br>
+  <mat-card-content>
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Company Profile">
+<br>
+        <mat-list>
+          <mat-list-item>
+            <b>Email:</b> {{insurerDetails.companyProfile.email}}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>       
+             <b>Phone Number:</b> {{insurerDetails.companyProfile.phoneNumber}}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>      
+              <b>Address:</b> {{insurerDetails.companyProfile.addressLine1}}
+          </mat-list-item>
+          <mat-list-item>      
+            Address 2: {{insurerDetails.companyProfile ? insurerDetails.companyProfile.addressLine2 : ""}}
+        </mat-list-item>
+        <mat-list-item>      
+          Address 3: {{insurerDetails.companyProfile ? insurerDetails.companyProfile.addressLine3 : ""}}
+      </mat-list-item>
+        </mat-list>
+        <br>
+      </mat-tab>
+      <mat-tab label="Contact Person">
+        <br>
+        <mat-list>
+          <mat-list-item>
+            Name: {{insurerDetails.companyProfile.contactPerson.firstName}}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>       
+            Surname: {{insurerDetails.companyProfile.contactPerson.lastName}}
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>      
+            Email: {{insurerDetails.companyProfile.contactPerson.email}}
+          </mat-list-item>
+          <mat-list-item>      
+            Phone Number: {{insurerDetails.companyProfile.contactPerson.phoneNumber}}
+          </mat-list-item>
+        </mat-list>
+        <br>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+
+</mat-card> 
+</div>
+</div>

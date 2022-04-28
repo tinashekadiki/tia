@@ -1,0 +1,42 @@
+<h3 class="page-title">
+  Company Profile
+</h3>
+
+<div *ngIf="profile !== undefined && profile !== null" class="dash-item profile">
+  <div fxLayout="row">
+    <span fxFlex></span>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="20">
+      <img (click)="openUploadImage()" class="img img-circle" width="100" *ngIf="profile.companyProfile.logoUrl !== null"
+           [src]="profile.companyProfile.logoUrl">
+      <div *ngIf="profile.companyProfile.logoUrl === null" (click)="openUploadImage()" fxFlex="80" class="img-circle">
+      </div>
+    </div>
+    <div fxFlex="60" fxLayout="column">
+      <div>
+        <h4 class="profile-item">Company Name</h4>
+        <p class="profile-item">{{profile.companyProfile.name}}</p>
+      </div>
+      <div>
+        <h4 class="profile-item">Email</h4>
+        <p class="profile-item">{{profile.companyProfile.email}}</p>
+      </div>
+    </div>
+    <div fxFlex="60" fxLayout="column">
+      <div>
+        <h4 class="profile-item">Headquaters</h4>
+        <p class="profile-item">{{profile.companyProfile.addressLine1}}</p>
+      </div>
+      <div>
+        <h4 class="profile-item">Contact Person</h4>
+        <p class="email">{{profile.admin.email}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="dash-item">
+  <front-application-branch-list></front-application-branch-list>
+</div>

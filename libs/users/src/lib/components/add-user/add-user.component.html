@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>Add User </h2>
+
+<mat-dialog-content>
+  <form
+    [formGroup]="userForm"
+    class="w-100 d-flex flex-column align-items-stretch"
+  >
+    <div class="row">
+        <mat-form-field class="col-6" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" type="text" />
+              </mat-form-field>
+
+              <mat-form-field class="col-6" appearance="outline">
+                <mat-label>Enter email</mat-label>
+      <input matInput placeholder="nm@example.com" formControlName="email"  required>               
+    </mat-form-field>
+    </div>
+    
+<div class="row">
+  <mat-form-field class="col-6" appearance="outline">        <mat-label>Group</mat-label>
+        <mat-select formControlName="groupIds"   required>
+          <mat-option *ngFor="let group of groups" [value]="group.id">{{group.name}}</mat-option>
+        </mat-select>
+        
+      </mat-form-field>
+
+      <mat-form-field class="col-6" appearance="outline">      <mat-label>Roles</mat-label>
+      <mat-select formControlName="roles"   required>
+        <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    </div>
+  </form></mat-dialog-content
+>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close> Cancel</button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="formValue.emit(userForm.value)"
+    [disabled]="userForm.invalid" (click)="save()" mat-dialog-close="true"
+  >Save
+  </button>
+</mat-dialog-actions>
+

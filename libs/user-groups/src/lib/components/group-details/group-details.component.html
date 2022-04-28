@@ -1,0 +1,104 @@
+
+<div *ngIf="group">
+  <h2 [routerLink]="['/user-groups']"
+  >Group / Details</h2>
+  <div class="d-flex flex-column align-items-stretch mx-3">
+    <mat-divider></mat-divider><br />
+    <mat-card class="mat-elevation-z10">
+      <mat-card-header>
+
+        <mat-card-title>{{ group.name }}</mat-card-title>
+        <mat-card-subtitle>
+         <b>{{ group.description }}</b> 
+
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-tab-group>
+          <mat-tab label="Permissions">
+
+              <nz-table #basicTable [nzData]="['']"  [nzTotal]="total"
+              [(nzPageIndex)]="pageIndex"
+              [(nzPageSize)]="pageSize"
+              >
+                <thead>
+                  <tr>
+                    <th>Permissions</th>
+                    <th> <button mat-raised-button  (click)="showUpdatePermissionDialog()">Update</button> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of permissions">
+                    <td>{{data}}</td>
+                 </tr>
+                </tbody>
+              </nz-table>
+
+          </mat-tab>
+
+          <mat-tab label="Roles">
+
+
+          <nz-table #basicTable [nzData]="['']" >
+            <thead>
+              <tr>
+                <th>Roles</th>
+                <th><button mat-raised-button  (click)="showAddRoleDialog()">Update</button></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let role of roles">
+                <td>{{role}}</td>
+
+
+                <td>
+                  <!-- <a mat-raised-button class="add-button" [routerLink]="'/user-groups/groups/'+data.id">View</a> -->
+
+
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          </mat-tab>
+          <!-- <mat-tab label="Users">
+            <mat-card> <button
+              (click)="showAddUserDialog()"
+              mat-raised-button
+              class="square-button"
+            >
+              Add User
+            </button></mat-card>
+
+
+
+          <nz-table #basicTable [nzData]="['']" >
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of users">
+                <td>{{data.username}}</td>
+                <td>{{data.email}}</td>
+
+                <td>
+                  <a mat-raised-button class="square-button" [routerLink]="'/user-groups/groups/'+data.id">View</a>
+
+
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+
+
+          </mat-tab> -->
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  </div>
+

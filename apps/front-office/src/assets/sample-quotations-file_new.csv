@@ -1,0 +1,7 @@
+number_of_terms,package,product,is_renewal,zwl_currency,zwl_amount,zar_currency,zar_amount,usd_currency,usd_amount
+1,INSURANCE_ONLY,Basic Third Party,FALSE,ZWL,7888,USD,35,USD,35
+2,INSURANCE_ONLY,Basic Third Party,FALSE,ZWL,4555,USD,44,USD,44
+3,INSURANCE_ONLY,Basic Third Party,FALSE,ZWL,2345,USD,44,USD,44
+1,INSURANCE_ONLY,Basic Third Party,TRUE,ZWL,3480,USD,44,USD,44
+2,INSURANCE_ONLY,Basic Third Party,TRUE,ZWL,8555,USD,23,USD,23
+3,INSURANCE_ONLY,Basic Third Party,TRUE,ZWL,6767,USD,11,USD,11
